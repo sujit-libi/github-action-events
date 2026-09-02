@@ -3,7 +3,18 @@ on:
   pull_request:
     types:
       - opened
+    branches:
+      - main # trigger for main branch
+      - 'dev-*' # trigger for any branch which start with dev- forexample : dev-panel or dev-admin-dashboard
+      - 'feature/**' # trigger for any branch which start with feature/ forexample: feature/chatbot or feature/admindasboard/settings
   workflow_dispatch:
+  push:
+    branches:
+      - main # trigger for main branch
+      - 'dev-*' # trigger for any branch which start with dev- forexample : dev-panel or dev-admin-dashboard
+      - 'feature/**' # trigger for any branch which start with feature/ forexample: feature/chatbot or feature/admindasboard/settings
+    paths-ignore:
+      - ".github/workflows/*"
 jobs:
   deploy:
     runs-on: ubuntu-latest
